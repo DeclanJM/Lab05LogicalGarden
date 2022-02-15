@@ -25,13 +25,31 @@ public class GardenHelper {
     }
     /*
        BRAINSTORM FOR ADDROW() HERE
+       check to make sure the row is valid
+       set the pH and light values for that row, return true
+       else return false
      */
     public boolean addRow(int row, int pH, String light) {
-        //TODO student
+        if(row == 1){
+            one = new GardenRow(light, pH);
+            return true;
+        }
+        if(row == 2){
+            two = new GardenRow(light, pH);
+            return true;
+        }
+        if(row == 3){
+            three = new GardenRow(light, pH);
+            return true;
+        }
+
         return false;
     }
     /*
         DESCRIPTION OF ADDPLANT() HERE
+        checks to see if canPlant returns true
+        sets the row value to store the plant values
+        prints to console
      */
     public boolean addPlant(String plantName, int row) {
         if(canPlant(plantName, searchRow(row))){
@@ -47,7 +65,13 @@ public class GardenHelper {
 
     //STEP 3
     public boolean canPlant(String plantName, GardenRow row){
-        //TODO student
+        if(searchPlant(plantName).getAmountOfSunshine() == row.getLight()){           /* amount oof sunshine compared to light */
+            if(searchPlant(plantName).getpHLow() <= row.getPH() && searchPlant(plantName).getpHHigh() >= row.getPH()){               /* lowPh <= object pH && high pH >= object Ph */
+                System.out.println("Can Plant");
+                return true;
+            }
+        }
+        System.out.println("Cannot Plant");
         return false;
     }
 
