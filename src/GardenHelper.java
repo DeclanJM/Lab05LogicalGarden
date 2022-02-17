@@ -65,9 +65,14 @@ public class GardenHelper {
 
     //STEP 3
     public boolean canPlant(String plantName, GardenRow row){
-        if(searchPlant(plantName).getAmountOfSunshine() == row.getLight()){           /* amount oof sunshine compared to light */
+        if(searchPlant(plantName).getAmountOfSunshine().equals(row.getLight())){           /* amount oof sunshine compared to light */
             if(searchPlant(plantName).getpHLow() <= row.getPH() && searchPlant(plantName).getpHHigh() >= row.getPH()){               /* lowPh <= object pH && high pH >= object Ph */
-                return true;
+                if((one != null && one.getPlant() != null && one.getPlant().getType().equals("VEG")) || (two != null && two.getPlant() != null && two.getPlant().getType().equals("VEG")) || (three != null && three.getPlant() != null && three.getPlant().getType().equals("VEG"))){
+                    return true;
+                }
+                if(searchPlant(plantName).getType().equals("VEG")){
+                    return true;
+                }
             }
         }
         return false;
